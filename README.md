@@ -1,4 +1,4 @@
-# SFCA-Siam
-This repository contains the code for SFCA-Siam
+# IRCA-Siam
+This repository contains the code for IRCA-Siam
 
 Coming Soon
