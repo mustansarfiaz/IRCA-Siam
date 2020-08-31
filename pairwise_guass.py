@@ -83,7 +83,7 @@ class Pairwise(Dataset):
         exemplar_image = 255.0 * self.transform_z(exemplar_img)
         width, height = exemplar_img.size
 
-        exemplar_noise = self.guass_noise(exemplar_img, 0.09)
+        exemplar_noise = self.gaussian_map(exemplar_img, 0.09)
         exemplar_noise = 255.0 * self.transform_z(exemplar_noise)
 
         instance_image = Image.open(img_files[rand_x])
@@ -92,7 +92,7 @@ class Pairwise(Dataset):
         
         width, height = instance_img.size
 
-        instance_noise = self.guass_noise(instance_img, 0.09)#self.gaussian_map(instance_img, width, self.cfg.guass_std)
+        instance_noise = self.gaussian_map(instance_img, 0.09)#self.gaussian_map(instance_img, width, self.cfg.guass_std)
         
         instance_noise = 255.0 * self.transform_x(instance_noise)
 
@@ -101,37 +101,6 @@ class Pairwise(Dataset):
     def __len__(self):
         return self.cfg.pairs_per_seq * len(self.seq_dataset)
     
-    
-    def guass_noise(self, image, var):
-        '''gaussian noise'''
-        image = np.array(image)
-        row,col,ch= image.shape
-        #plt.imshow(image)
-        #plt.show()
-        mean = 0
-        #var = 0.1
-        #================Guassian 0.09######################
-        sigma = 0.09
-        #noise = np.random.normal(0.0, 0.9, image.shape)
-        #gauss = np.random.normal(mean,sigma**0.5,(row,col,ch))
-        #gauss = gauss.reshape(row,col,ch)
-        #plt.imshow(gauss)
-        #plt.show()
-        # noisy = image + noise
-        # plt.imshow(noisy)
-        # plt.show()
-        # noisy = Image.fromarray(noisy.astype('uint8'))
-        # plt.imshow(noisy)
-        # plt.show()
-        gimg = skimage.util.random_noise(image, mode="gaussian", var = sigma )
-#        plt.imshow(gimg)
-#        plt.show()
-
-        output = Image.fromarray(gimg)
-        plt.imshow(np.array(output).astype('uint8'))
-        plt.show()
-
-        return noisy 
     def gaussian_map(self,image, kernlen, std):
         """Returns a 3D Gaussian map."""
         
@@ -152,20 +121,20 @@ class Pairwise(Dataset):
         
         #generating weighted g_Map
        
-        gkernel_2d_chan3 = np.multiply(gkernel_2d_chan3, image).astype('uint8')
-        plt.imshow(image)
-        plt.show()
-        plt.imshow(gkernel_2d_chan3)
-        plt.show()
+       # gkernel_2d_chan3 = np.multiply(gkernel_2d_chan3, image).astype('uint8')
+       # plt.imshow(image)
+       # plt.show()
+       # plt.imshow(gkernel_2d_chan3)
+       # plt.show()
 #        
         image_final= np.array(gkernel_2d_chan3).astype('uint8') + np.array(image).astype('uint8')
-        plt.imshow(image)
-        plt.show()
-        plt.imshow(image_final.astype('uint8'))
-        plt.show()
+       # plt.imshow(image)
+       # plt.show()
+       # plt.imshow(image_final.astype('uint8'))
+       # plt.show()
 #        image_test= np.array(image).astype('uint8')
 #        image_final_test = image_final.astype('uint8')
-        image_final = gkernel_2d_chan3
+
         output = Image.fromarray(image_final)
         
         return output
