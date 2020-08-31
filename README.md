@@ -1,10 +1,10 @@
-# SCS-Siam PyTorch implementation
+# IRCA-Siam PyTorch implementation
 ## Introduction
 This project in the direction of Visual Object Tracking.
 
 Paper: Improving Object Tracking by Added Noise and Channel Attention
 
-**SCS-Siam architecture**
+**IRCA-Siam architecture**
 
 ![img1](https://github.com/mustansarfiaz/IRCA-Siam/blob/master/framework/framework.png)
 
