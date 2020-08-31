@@ -28,7 +28,6 @@ root_dir_for_OTB     = '/media/mustansar/data/benchmarks/OTB2015' <-- change to 
 python3 train.py
 ```
 
-## How to Run - Testing
 
 ## How to Run - Testing
 1. Download pretrained `model_e46.pth` from [Google-Drive] (https://drive.google.com/file/d/15HEeV1SykqMvxi_HmyNHR74qJW-80irS/view?usp=sharing), and put the file under `model/model_e46.pth`.
