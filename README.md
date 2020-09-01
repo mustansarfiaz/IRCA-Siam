@@ -2,7 +2,7 @@
 ## Introduction
 This project in the direction of Visual Object Tracking.
 
-Paper: Improving Object Tracking by Added Noise and Channel Attention
+[Paper](https://www.mdpi.com/1424-8220/20/13/3780): Improving Object Tracking by Added Noise and Channel Attention
 
 **IRCA-Siam architecture**
 
